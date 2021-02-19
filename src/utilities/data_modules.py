@@ -11,39 +11,36 @@ import pytorch_lightning as pl
 from torch.utils.data import random_split, DataLoader
 
 # Note - you must have torchvision installed for this example
-from torchvision.datasets import MNIST
+from torchvision.datasets import DatasetFolder
 from torchvision import transforms
 from src.constants import DATADIR, TRAINDIR, VALDIR, TESTDIR
 
 
-class YourModule(pl.LightningDataModule):
+class DataModule(pl.LightningDataModule):
 
-    def __init__(self, data_dir: str = './'):
+    def __init__(self):
         super().__init__()
-        self.data_dir = data_dir
+        self.data_dir = os.path.join(DATADIR, 'MedNIST')
         self.transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.1307,), (0.3081,))
         ])
+        self.MedNIST_folders = ['AbdomenCT', 'BreastMRI', 'ChestCT', 'CXR', 'Hand', 'HeadCT']
 
 
     def prepare_data(self):
         # download eg MedNIST
         os.chdir(DATADIR)
-        # CBIS-DDSM:
-        !curl -L -o nbia-data-retriever-3.6.deb 'https://cbiit-download.nci.nih.gov/nbia/releases/ForTCIA/NBIADataRetriever_3.6/nbia-data-retriever-3.6.deb'
-        !curl -L -o CBIS-DDSM.tcia 'https://wiki.cancerimagingarchive.net/download/attachments/22516629/CBIS-DDSM-All-doiJNLP-zzWs5zfZ.tcia?version=1&modificationDate=1534787024127&api=v2' 
         # MedNIST:
-            
-        #!curl -L -o MedNIST.tar.gz 'https://www.dropbox.com/s/5wwskxctvcxiuea/MedNIST.tar.gz'
-
-        # NIH CXR: png
-        # 'https://nihcc.app.box.com/v/ChestXray-NIHCC/folder/37178474737/images_001.tar.gz'
+        if not os.path.exists(self.data_dir):
+            if not all(folder in os.listdir(data_dir) for folder in MedNIST_folders):
+                !git clone https://github.com/apolanco3225/Medical-MNIST-Classification.git
+        
     def setup(self, stage=None):
 
         # Assign train/val datasets for use in dataloaders
         if stage == 'fit' or stage is None:
-            mnist_full = MNIST(self.data_dir, train=True, transform=self.transform)
+            mnist_full = DatasetFolder(self.data_dir, transform=self.transform)
             self.mnist_train, self.mnist_val = random_split(mnist_full, [55000, 5000])
 
             # Optionally...
@@ -51,7 +48,7 @@ class YourModule(pl.LightningDataModule):
 
         # Assign test dataset for use in dataloader(s)
         if stage == 'test' or stage is None:
-            self.mnist_test = MNIST(self.data_dir, train=False, transform=self.transform)
+            self.mnist_test = MNIST(self.data_dir, transform=self.transform)
 
             # Optionally...
             # self.dims = tuple(self.mnist_test[0][0].shape)
