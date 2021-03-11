@@ -1,0 +1,6 @@
+opencv-python==4.5.1
+pydicom==2.1.2
+pytorch_lightning==1.2.3
+tensorboard==2.4.1
+test-tube
+torchvision==0.9.0

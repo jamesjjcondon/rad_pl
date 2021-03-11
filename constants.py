@@ -1,24 +1,22 @@
 """
 Defines constants used in src.
 """
+
+from pathlib import Path
 import platform
+
 machine = platform.node()
 
-if machine == 'lambda-quad': #AIML
-    CSVDIR = '/home/mlim-user/Documents/james/tempdir/cleaning_temp' 
+if machine == '<name-of-your-work-computer':
     TRAINDIR = '/data/james/NYU_retrain'
     VALDIR = '/nvme/james/val_ims_master'
     TESTDIR = '/nvme/james/test_ims_master'
 
-elif machine == 'home':
-    CSVDIR = '/media/1TB_HDD/samlim/temp'
-    TRAINDIR = VALDIR = TESTDIR = '/media/james/drjc_ext_HD1/data/NYU_retrain'
-
-elif machine == 'DL136541':
-    CSVDIR = '/Data/james/tmp'
-    DATADIR = TRAINDIR = VALDIR = TESTDIR = '/Data/james/'
+elif machine == 'home': # / <name-of-your-home-computer>
+    DATADIR = Path('/data1')
+    #TRAINDIR = VALDIR = TESTDIR = '/media/james/drjc_ext_HD1/data/NYU_retrain'
     
-elif machine == "<name of new computer here>":# eg user@computer_name
+elif machine == "<name of new computer here>":# eg user@computer_name / also the 'machine' variable in this script
     CSVDIR = 'Directory for .csv or similar with ground truth data'    
     DATADIR = 'Directory for your train data'
     TRAINDIR = 'Directory for your validation data'

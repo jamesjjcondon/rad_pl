@@ -10,14 +10,27 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
-from torchvision import transforms
-import pytorch_lightning as pl
-from src.data_loading.drjc_datasets import BSSA_exams
 from torch.optim import Adam
-import src.modeling.layers as layers
-from src.constants import VIEWS, VIEWANGLES
+
+from torchvision import transforms, models
+
+import pytorch_lightning as pl
+from pytorch_lightning.metrics.functional.auroc import auroc
+
+from IPython import embed
 
 
+class ImageNet_Pretrained_Model(nn.Module):
+    
+    def __init__(self):
+        super().__init__()
+        self.model = models.resnet50(pretrained=True)
+        self.model.fc = nn.Linear(in_features=2048, out_features=6)
+        
+    def forward(self, x):
+        return self.model(x)
+        
+        
 class YourModel(pl.LightningModule):
     """ 
     """
@@ -26,69 +39,38 @@ class YourModel(pl.LightningModule):
         """ 
         Initialise custom objects here
         """
-
+        self.hparams = hparams
+        self.model = ImageNet_Pretrained_Model()
         self.accuracy = pl.metrics.Accuracy()
+        self.AUC = auroc
         
     def forward(self, x):
-        h = self.all_views_gaussian_noise_layer(x)
-        result = self.four_view_resnet(h)
-        h = self.all_views_avg_pool(result)
-
-        # Pool, flatten, and fully connected layers
-        h_cc = torch.cat([h[VIEWS.L_CC], h[VIEWS.R_CC]], dim=1) # CCs concatenated """
-        h_mlo = torch.cat([h[VIEWS.L_MLO], h[VIEWS.R_MLO]], dim=1) # MLOs concatenated """
-
-        h_cc = F.relu(self.fc1_cc(h_cc))
-        h_mlo = F.relu(self.fc1_mlo(h_mlo))
-        
-        h_cc = self.output_layer_cc(h_cc)
-        h_mlo = self.output_layer_mlo(h_mlo)
-
-        h = {
-            VIEWANGLES.CC: h_cc,
-            VIEWANGLES.MLO: h_mlo,
-        }
-        
-        return h
+        logits = self.model.forward(x)
+        return logits
     
     def training_step(self, batch, batch_idx):
         x, y = batch
         out = self.forward(x)
 
-        train_loss = F.nll_loss(out, y)
-        
-        # score for this batch:
-        batch_accuracy = self.compute_preds_acc_no_cpu(out, y, self.hparams.train_bsize)
-        self.log('train_loss', train_loss, prog_bar=True, logger=True, on_step=True,
-        on_epoch=True)
-        self.log('train_acc', batch_accuracy, prog_bar=True, logger=True, on_step=True,
-        on_epoch=True)
+        train_loss = self.your_loss(out, y)
+    
+        self.log('train_loss', train_loss, prog_bar=True, logger=True, on_step=True, on_epoch=True)
         return train_loss
         
     def validation_step(self, batch, batch_idx):
         x, y = batch
         out = self.forward(x)
 
-        val_loss = F.nll_loss(out, y) # or self.your_custom_loss(out, y)
-        
-        # score for this batch:
-        batch_accuracy = self.compute_preds_acc_no_cpu(out, y)
+        val_loss = self.your_loss(out, y) # or self.your_custom_loss(out, y)
         
         self.log('val_loss', val_loss, prog_bar=True, logger=True, on_step=True, on_epoch=True)
-        self.log('val_acc', batch_accuracy, prog_bar=True, logger=True, on_step=True,
-        on_epoch=True)
+        
         gc.collect() #pytorch/issues/40911
         return val_loss
     
-    def your_custom_loss(self, out, y):
-        # Your custom loss function
-        loss = False
-        return loss
-    
-    def your_accuracy(self, output, targets, batch_size, mode='view_split'):
-        # for multiple views or other requirements depending on your data.
-        logits, class_preds = torch.max(output, dim=-1)
-        return self.accuracy(class_preds, targets)
+    def your_loss(self, out, y):
+        # Your loss function
+        return F.cross_entropy(out, y)
     
     def configure_optimizers(self):
         optimiser = Adam(
@@ -143,38 +125,6 @@ class YourModel(pl.LightningModule):
         
         else:
             return [optimiser]
-
-    def train_dataloader(self):
-        ds = dicom_dataset(
-                exam_list_in=self.hparams.train_exam_list_fp,
-                transform=self.train_trsfm,
-                parameters=self.hparams,
-                train_val_or_test='train'
-                )
-
-        dloader = DataLoader(
-                dataset=ds,
-                batch_size=self.hparams.train_bsize, #4, #self.hparams.batch_size,
-                num_workers=self.hparams.num_workers, #6,
-                pin_memory=True                
-                )
-        return dloader
-
-    def val_dataloader(self):
-        ds = dicom_dataset(
-                exam_list_in=self.hparams.val_exam_list_fp,
-                transform=self.train_trsfm,
-                parameters=self.hparams,
-                train_val_or_test='val'
-                )
-        
-        dloader = DataLoader(
-                dataset=ds,
-                batch_size=self.hparams.val_bsize,
-                num_workers=4, #self.hparams.num_workers, #0, # >0 blows out RAM,
-                pin_memory=True, 
-                )
-        return dloader
 
      
 
