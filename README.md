@@ -23,27 +23,27 @@ For example:
 
 In a terminal, 
 
- - 2.1 cd into a folder where you want to create this template
+ - cd into a folder where you want to create this template
 
- - 2.2. type `git clone https://github.com/jamesjjcondon/rad_pl.git`
+ - type 
+   `git clone https://github.com/jamesjjcondon/rad_pl.git`
 
- - 2.3. `cd rad_pl`
+ - `cd rad_pl`
 
- - 2.4. `pip install -r requirements.txt`
+ - `pip install -r requirements.txt`
 
 ## Other OS
-You on your own, sorry.
+You're on your own, sorry.
 Learn Ubuntu : )
 
-## 3. Adjust a folders / directories
-Open constants.py and add in your 'machine' / computer name and a directory for DATADIR
+## 3. Adjust constants.py for your folders / directories
+Open constants.py and add in your 'machine' / computer name and a directory for DATADIR, then save.
 
-This makes it easy to move machines. 
+(This makes it easy to move machines and share with colleagues.) 
 
 ## 4. Start training
 
 - from the rad_pl directory type `python train.py`
-- learn to use IPython.embed() to debug! It'll save you a LOT of time.
 
 ## 5. Test out hyperparameters and pytorch_lightning.Trainer flags
 Check out the trainer section on pytorch_lightning docs page. 
@@ -54,9 +54,8 @@ Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.htm
 
 ## 7.Do your own inference and evaluation
 
-
 ## 8. Try customising to a different dataset and with different file formats
-
+- learn to use IPython.embed() to debug! It'll save you a LOT of time.
 
 if you want help with a dicom pytorch dataset, pm me.
 
