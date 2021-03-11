@@ -15,7 +15,7 @@ from torch.optim import Adam
 from torchvision import transforms, models
 
 import pytorch_lightning as pl
-from pytorch_lightning.metrics.functional.auroc import auroc
+from pytorch_lightning.metrics.classification import Accuracy
 
 from IPython import embed
 
@@ -42,7 +42,7 @@ class YourModel(pl.LightningModule):
         self.hparams = hparams
         self.model = ImageNet_Pretrained_Model()
         self.accuracy = pl.metrics.Accuracy()
-        self.AUC = auroc
+        self.acc = Accuracy()
         
     def forward(self, x):
         logits = self.model.forward(x)
@@ -53,8 +53,10 @@ class YourModel(pl.LightningModule):
         out = self.forward(x)
 
         train_loss = self.your_loss(out, y)
-    
+        train_acc = self.your_metric(out, y)
+
         self.log('train_loss', train_loss, prog_bar=True, logger=True, on_step=True, on_epoch=True)
+        self.log('train_acc', train_acc, prog_bar=True, logger=True, on_step=True, on_epoch=True)
         return train_loss
         
     def validation_step(self, batch, batch_idx):
@@ -62,9 +64,10 @@ class YourModel(pl.LightningModule):
         out = self.forward(x)
 
         val_loss = self.your_loss(out, y) # or self.your_custom_loss(out, y)
+        val_acc = self.your_metric(out, y)
         
         self.log('val_loss', val_loss, prog_bar=True, logger=True, on_step=True, on_epoch=True)
-        
+        self.log('val_acc', val_acc, prog_bar=True, logger=True, on_step=True, on_epoch=True)      
         gc.collect() #pytorch/issues/40911
         return val_loss
     
@@ -72,6 +75,12 @@ class YourModel(pl.LightningModule):
         # Your loss function
         return F.cross_entropy(out, y)
     
+    def your_metric(self, out, y):
+        # checkout metrics section in pytorch_docs
+        sm = nn.Softmax(dim=1)
+        preds = sm(out)
+        return self.acc(preds, y)
+            
     def configure_optimizers(self):
         optimiser = Adam(
                 self.parameters(), lr=self.hparams.lr,

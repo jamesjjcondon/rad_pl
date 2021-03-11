@@ -16,8 +16,8 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.utilities.parsing import AttributeDict
 
 from models import YourModel
-from src.utilities.data_modules import MedNIST
-from src.constants import DATADIR
+from data_modules import MedNIST
+from constants import DATADIR
 
 from IPython import embed
 #%%
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         {
             'accel': None,
             'autolr': False,
-            'batch_size': 1,
+            'batch_size': 2,
             'check_val_n': 1,
             'dev': False,
             'gpus': -1,

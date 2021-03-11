@@ -18,7 +18,7 @@ import pytorch_lightning as pl
 # Note - you must have torchvision installed for this example
 from torchvision.datasets import DatasetFolder
 from torchvision import transforms
-from src.constants import DATADIR #TRAINDIR, VALDIR, TESTDIR
+from constants import DATADIR #TRAINDIR, VALDIR, TESTDIR
 
 from IPython import embed
 
