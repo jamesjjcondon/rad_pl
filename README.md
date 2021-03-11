@@ -1,16 +1,17 @@
 # rad_pl
 
-A pytorch_lightning template for radiology convolutional neural newtorks.
+A pytorch_lightning project template for radiology convolutional neural newtorks.
 
 #ArtificialIntelligence
 #NeuralNetworks
-#HealthAI 
+#HealthAI
+#Pytorch 
 
 # Installation:
 
 ## Ubuntu
 
-## 1. Setup a virtualenvironment first:
+## 1. Setup a virtual environment first:
 - use either virtualenv or conda
 - activate it
 
@@ -41,20 +42,22 @@ Open constants.py and add in your 'machine' / computer name and a directory for 
 
 (This makes it easy to move machines and share with colleagues.) 
 
-## 4. Start training
+# Start training on MedNIST
+- care of Arturo Polanco: https://github.com/apolanco3225/Medical-MNIST-Classification
+- from the rad_pl directory type 
 
-- from the rad_pl directory type `python train.py`
+`python train.py`
 
-## 5. Test out hyperparameters and pytorch_lightning.Trainer flags
+## Test out hyperparameters and pytorch_lightning.Trainer flags
 Check out the trainer section on pytorch_lightning docs page. 
 Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html 
 
-## 6. Use tensorboard to view learning curves:
+## Use tensorboard to view learning curves:
 `tensorboard --logdir '...<your-DATADIR->\logs'`
 
-## 7.Do your own inference and evaluation
+## Do your own inference and evaluation
 
-## 8. Try customising to a different dataset and with different file formats
+## Try customising to a different dataset and with different file formats
 - learn to use IPython.embed() to debug! It'll save you a LOT of time.
 
 if you want help with a dicom pytorch dataset, pm me.
