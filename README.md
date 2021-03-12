@@ -39,7 +39,7 @@ The scripts here, as is, are simply classifiying the images' modality into these
 This is a relatively easy task for a model to learn.
 
 # Prerequisites:
-
+- git
 - a python installation
 - ability to create virtual environments
 
