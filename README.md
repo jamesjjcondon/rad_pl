@@ -6,8 +6,10 @@ The focus here is to expidite getting started on your own project.
 
 #ArtificialIntelligence
 #NeuralNetworks
+#CNNs
 #HealthAI
-#Pytorch 
+#Pytorch
+#PytorchLightning
 
 # Dataset - MedNIST:
 
@@ -99,8 +101,6 @@ Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.htm
  - [ ] Add a dicom --> hdf5 preprocessing torch.utils.data.DataLoader
  - [ ] add a hdf5 dataset class
  
-if you want help with a dicom pytorch dataset, pm me.
-
 Have fun!
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
