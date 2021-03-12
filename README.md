@@ -1,4 +1,4 @@
-## rad_pl
+# rad_pl
 
 A [pytorch_lightning](https://www.pytorchlightning.ai/) project template for radiology convolutional neural newtorks.
 
@@ -11,7 +11,7 @@ The focus here is to expedite you getting started on your own project.
 #Pytorch
 #PytorchLightning
 
-# Dataset - MedNIST:
+## Dataset - MedNIST:
 
 MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the [Creative Commons CC BY-SA 4.0 license](https://creativecommons.org/licenses/by/4.0/).
 
@@ -108,7 +108,7 @@ then open up a browser at htttp://localhost:6006 (or wherever tensorboard tells 
 ## Try customising to a different dataset and with different file formats
 - learn to use IPython.embed() to debug! It'll save you a LOT of time.
 
-# To Do:
+## To Do:
  - [ ] Add generic inference and possibly evaluation scripts
  - [ ] Add a dicom dataset loader and/or class
  - [ ] Add a dicom --> hdf5 preprocessing torch.utils.data.DataLoader
