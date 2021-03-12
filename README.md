@@ -2,17 +2,50 @@
 
 A pytorch_lightning project template for radiology convolutional neural newtorks.
 
+The focus here is to expidite getting started on your own project. 
+
 #ArtificialIntelligence
 #NeuralNetworks
 #HealthAI
 #Pytorch 
+
+# Dataset - MedNIST:
+
+MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the Creative Commons CC BY-SA 4.0 license.
+If you use the MedNIST dataset, please acknowledge the source.
+It originates and sizes have been standardised from:
+ - [The Cancer Imaging Archive](https://www.cancerimagingarchive.net/), 
+   - Clark K, Vendt B, Smith K, et al. The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository. Journal of Digital Imaging. 2013; 26(6): 1045-1057. doi: 10.1007/s10278-013-9622-7. ([link](https://pubmed.ncbi.nlm.nih.gov/23884657/))
+ - [RSNA Bone Age Challenge](https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/rsna-pediatric-bone-age-challenge-2017) 
+   - Halabi SS, Prevedello LM, Kalpathy-Cramer J, et al. The RSNA Pediatric Bone Age Machine Learning Challenge. Radiology 2018; 290(2):498-503.
+ - [NIH Chest X-ray dataset]('https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community') .
+   - Wang X, Peng Y, Lu L, Lu Z, Bagheri M, Summers RM. ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases. IEEE CVPR 2017, http://openaccess.thecvf.com/content_cvpr_2017/papers/Wang_ChestX-ray8_Hospital-Scale_Chest_CVPR_2017_paper.pdf
+   
+Please see the relevant terms of use:
+ - [TCIA Data Usage Policy](https://www.cancerimagingarchive.net/access-data/)
+ - [RSNA Bone Age Challenge Terms of Use](https://www.rsna.org/-/media/Files/RSNA/Education/AI-resources-and-training/AI-image-challenge/RSNA-2017-AI-Challenge-Terms-of-Use-and-Attribution_Final.ashx?la=en&hash=F28B401E267D05658C85F5D207EC4F9AE9AE6FA9)
+
+The scripts here, as is, are simply classifiying the images' modality into these classes:
+- Abdomen CT
+- Breast MRI
+- Chest X-ray
+- Chest CT
+- Hand XR
+- Head CT
+
+This is a relatively easy task for a model to learn.
+
+# Prerequisites:
+
+- a python installation
+- ability to create virtual environments
 
 # Installation:
 
 ## Ubuntu
 
 ## 1. Setup a virtual environment first:
-- use either virtualenv or conda
+- use either virtualenv, venv or conda
 - activate it
 
 For example:
@@ -60,6 +93,12 @@ Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.htm
 ## Try customising to a different dataset and with different file formats
 - learn to use IPython.embed() to debug! It'll save you a LOT of time.
 
+# To Do:
+ - [ ] Add generic inference and possibly evaluation scripts
+ - [ ] Add a dicom dataset loader and/or class
+ - [ ] Add a dicom --> hdf5 preprocessing torch.utils.data.DataLoader
+ - [ ] add a hdf5 dataset class
+ 
 if you want help with a dicom pytorch dataset, pm me.
 
 Have fun!
