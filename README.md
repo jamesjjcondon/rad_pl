@@ -60,6 +60,7 @@ or conda:
 `conda create --name rad_pl_env`
 
 `conda activate rad_pl_env`
+and you might need to `conda install pip`
 
 ## 2. Download the repo:
 
