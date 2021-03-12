@@ -87,9 +87,9 @@ On windows you can use 'vim' from an anaconda prompt or notepad to view and edit
 In a terminal, you could also type:
 `python constants.py` to prompt an error message with your machine name (to add back into constants.py).
 
-# Start training on MedNIST
+## Start training on MedNIST
 - care of Arturo Polanco: https://github.com/apolanco3225/Medical-MNIST-Classification
-- from the rad_pl directory type 
+- from the rad_pl directory type:
 
 `python train.py`
 
