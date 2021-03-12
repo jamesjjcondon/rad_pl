@@ -2,7 +2,7 @@
 
 A pytorch_lightning project template for radiology convolutional neural newtorks.
 
-The focus here is to expidite getting started on your own project. 
+The focus here is to expidite you getting started on your own project. 
 
 #ArtificialIntelligence
 #NeuralNetworks
