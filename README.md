@@ -101,6 +101,7 @@ Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.htm
  - [ ] Add a dicom dataset loader and/or class
  - [ ] Add a dicom --> hdf5 preprocessing torch.utils.data.DataLoader
  - [ ] add a hdf5 dataset class
+ - [ ] Test on Windows
  
 Have fun!
 
