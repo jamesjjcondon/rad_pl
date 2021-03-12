@@ -52,17 +52,19 @@ This is a relatively easy task for a model to learn.
 - make sure you've got pip
 
 For example with venv:
+
 `python -m venv my_environments/rad_pl_env`
 
 `source my_environments/rad_pl_env/bin/activate` 
 
 or conda:
+
 `conda create --name rad_pl_env`
 
 `conda activate rad_pl_env`
 and you might need to `conda install pip`
 
-## 2. Download the repo:
+## 2. Download the repository:
 
 In a terminal, 
 
@@ -83,7 +85,7 @@ On windows you can use 'vim' from an anaconda prompt or notepad to view and edit
 (This makes it easy to move machines and share with colleagues.) 
 
 In a terminal, you could also type:
-`python constants.py` to prompt an error message with your machine name (to add into constants.py).
+`python constants.py` to prompt an error message with your machine name (to add back into constants.py).
 
 # Start training on MedNIST
 - care of Arturo Polanco: https://github.com/apolanco3225/Medical-MNIST-Classification
