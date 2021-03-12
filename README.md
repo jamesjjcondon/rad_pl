@@ -13,7 +13,8 @@ The focus here is to expidite getting started on your own project.
 
 # Dataset - MedNIST:
 
-MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the Creative Commons CC BY-SA 4.0 license.
+MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the [Creative Commons CC BY-SA 4.0 license](https://creativecommons.org/licenses/by/4.0/).
+
 If you use the MedNIST dataset, please acknowledge the source.
 It originates and sizes have been standardised from:
  - [The Cancer Imaging Archive](https://www.cancerimagingarchive.net/), 
