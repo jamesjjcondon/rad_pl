@@ -1,4 +1,4 @@
-# rad_pl
+## rad_pl
 
 A [pytorch_lightning](https://www.pytorchlightning.ai/) project template for radiology convolutional neural newtorks.
 
