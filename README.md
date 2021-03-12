@@ -39,22 +39,27 @@ The scripts here, as is, are simply classifiying the images' modality into these
 This is a relatively easy task for a model to learn.
 
 # Prerequisites:
-- git
-- a python installation
+- [git](https://git-scm.com/downloads)
+- a [python](https://www.python.org/downloads/) installation
 - ability to create virtual environments
+- NVIDIA's [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) if you have and want to use a GPU/graphics card.
 
 # Installation:
-
-## Ubuntu
 
 ## 1. Setup a virtual environment first:
 - use either virtualenv, venv or conda
 - activate it
+- make sure you've got pip
 
-For example:
-`python -m venv my_environments/rad_pl`
+For example with venv:
+`python -m venv my_environments/rad_pl_env`
 
-`source my_environments/rad_pl/bin/activate` 
+`source my_environments/rad_pl_env/bin/activate` 
+
+or conda:
+`conda create --name rad_pl_env`
+
+`conda activate rad_pl_env`
 
 ## 2. Download the repo:
 
@@ -69,14 +74,15 @@ In a terminal,
 
  - `pip install -r requirements.txt`
 
-## Other OS
-You're on your own, sorry.
-Learn Ubuntu : )
 
 ## 3. Adjust constants.py for your folders / directories
 Open constants.py and add in your 'machine' / computer name and a directory for DATADIR, then save.
 
+On windows you can use 'vim' from an anaconda prompt or notepad to view and edit. 
 (This makes it easy to move machines and share with colleagues.) 
+
+In a terminal, you could also type:
+`python constants.py` to prompt an error message with your machine name (to add into constants.py).
 
 # Start training on MedNIST
 - care of Arturo Polanco: https://github.com/apolanco3225/Medical-MNIST-Classification
@@ -90,6 +96,9 @@ Currently: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.htm
 
 ## Use tensorboard to view learning curves:
 `tensorboard --logdir '...<your-DATADIR->\logs'`
+
+eg `tensorboard --logdir C:\Users\James\Documents\rad_pl\logs`
+then open up a browser at htttp://localhost:6006 (or wherever tensorboard tells you to).
 
 ## Do your own inference and evaluation
 
