@@ -52,7 +52,6 @@ def train(hparams):
     
     trainer = Trainer(
         accelerator=hparams.accel,
-        amp_backend='native',
         auto_lr_find=hparams.autolr,
         benchmark=True,
         callbacks=[ckpt_callback, early_stop_callback],
@@ -62,7 +61,6 @@ def train(hparams):
         logger=logger,
         max_epochs=hparams.max_epochs,
         overfit_batches=16,
-        precision=hparams.precision,
         profiler=False,
         )
     
@@ -82,8 +80,7 @@ if __name__ == "__main__":
             'batch_size': 2,
             'check_val_n': 1,
             'dev': False,
-            'gpus': -1,
-            'grad_cum': False,
+            'gpus': None,
             'log_path': DATADIR.joinpath('logs'),
             'lr': 0.0001,
             'lr_schedule': 'ROP',
@@ -91,7 +88,6 @@ if __name__ == "__main__":
             'num_nodes': 1,
             'num_workers': 0,
             'pl_ver': pl.__version__,
-            'precision': 16,
             'seed': 22117,
             'weight_decay': 1e-07
             })
