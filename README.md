@@ -1,6 +1,6 @@
 # rad_pl
 
-A pytorch_lightning project template for radiology convolutional neural newtorks.
+A [pytorch_lightning](https://www.pytorchlightning.ai/) project template for radiology convolutional neural newtorks.
 
 The focus here is to expidite you getting started on your own project. 
 
