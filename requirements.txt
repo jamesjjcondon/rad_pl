@@ -1,4 +1,5 @@
-opencv-python==4.5.1
+IPython
+opencv-python>=4.5.1
 pydicom==2.1.2
 pytorch_lightning==1.2.3
 tensorboard==2.4.1
