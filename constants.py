@@ -11,16 +11,16 @@ import platform
 
 machine = platform.node()
 
-if machine == '<name-of-your-work-computer>':
-    TRAINDIR = Path('/data/james/NYU_retrain')
-    VALDIR = Path('/nvme/james/val_ims_master')
-    TESTDIR = Path('/nvme/james/test_ims_master')
+if machine == '<name-of-your-computer>': # eg user@computer_name / also the 'machine' variable in this script
+    DATADIR = Path('C:\\Users\James\data\')
 
-elif machine == 'home': # / <name-of-your-home-computer>
+elif machine == 'work-computer': # / <name-of-your-home-computer>
     DATADIR = Path('/data1')
-    #TRAINDIR = VALDIR = TESTDIR = '/media/james/drjc_ext_HD1/data/NYU_retrain'
+    TRAINDIR = Path('/media/james/data/train')
+    VALDIR = Path('/media/james/data/val')
+    TESTDIR = Path('/media/james/data/test')
     
-elif machine == "<name of new computer here>":# eg user@computer_name / also the 'machine' variable in this script
+elif machine == "<name of new computer here>":
     CSVDIR = Path('Directory for .csv or similar with ground truth data')    
     DATADIR = Path('Directory for your train data')
     TRAINDIR = Path('Directory for your validation data')
