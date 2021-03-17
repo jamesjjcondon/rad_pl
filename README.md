@@ -111,10 +111,10 @@ This is a relatively easy task for a model to learn.
 
 ## To Do:
  - [ ] Add generic inference and possibly evaluation scripts
- - [ ] Add a dicom dataset loader and/or class
+ - [ ] Add a dicom dataset loader / class
  - [ ] Add a dicom --> hdf5 preprocessing torch.utils.data.DataLoader
  - [ ] add a hdf5 dataset class
- - [ ] Test on Windows
+ - [x] Test on Windows
  
 Have fun!
 
