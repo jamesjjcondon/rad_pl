@@ -11,32 +11,6 @@ The focus here is to expedite you getting started on your own project.
 #Pytorch
 #PytorchLightning
 
-## Dataset - MedNIST:
-
-MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the [Creative Commons CC BY-SA 4.0 license](https://creativecommons.org/licenses/by/4.0/).
-
-If you use the MedNIST dataset, please acknowledge the source.
-It originates and sizes have been standardised from:
- - [The Cancer Imaging Archive](https://www.cancerimagingarchive.net/), 
-   - Clark K, Vendt B, Smith K, et al. The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository. Journal of Digital Imaging. 2013; 26(6): 1045-1057. doi: 10.1007/s10278-013-9622-7. ([link](https://pubmed.ncbi.nlm.nih.gov/23884657/))
- - [RSNA Bone Age Challenge](https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/rsna-pediatric-bone-age-challenge-2017) 
-   - Halabi SS, Prevedello LM, Kalpathy-Cramer J, et al. The RSNA Pediatric Bone Age Machine Learning Challenge. Radiology 2018; 290(2):498-503.
- - [NIH Chest X-ray dataset]('https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community')
-   - Wang X, Peng Y, Lu L, Lu Z, Bagheri M, Summers RM. ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases. IEEE CVPR 2017, http://openaccess.thecvf.com/content_cvpr_2017/papers/Wang_ChestX-ray8_Hospital-Scale_Chest_CVPR_2017_paper.pdf
-   
-Please see the relevant terms of use:
- - [TCIA Data Usage Policy](https://www.cancerimagingarchive.net/access-data/)
- - [RSNA Bone Age Challenge Terms of Use](https://www.rsna.org/-/media/Files/RSNA/Education/AI-resources-and-training/AI-image-challenge/RSNA-2017-AI-Challenge-Terms-of-Use-and-Attribution_Final.ashx?la=en&hash=F28B401E267D05658C85F5D207EC4F9AE9AE6FA9)
-
-The scripts here, as is, are simply classifiying the images' modality into these classes:
-- Abdomen CT
-- Breast MRI
-- Chest X-ray
-- Chest CT
-- Hand XR
-- Head CT
-
-This is a relatively easy task for a model to learn.
 
 # Prerequisites:
 - [git](https://git-scm.com/downloads)
@@ -107,6 +81,33 @@ then open up a browser at htttp://localhost:6006 (or wherever tensorboard tells 
 
 ## Try customising to a different dataset and with different file formats
 - learn to use IPython.embed() to debug! It'll save you a LOT of time.
+
+## Dataset - MedNIST:
+
+MedNIST is made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the [Creative Commons CC BY-SA 4.0 license](https://creativecommons.org/licenses/by/4.0/).
+
+If you use the MedNIST dataset, please acknowledge the source.
+It originates and sizes have been standardised from:
+ - [The Cancer Imaging Archive](https://www.cancerimagingarchive.net/), 
+   - Clark K, Vendt B, Smith K, et al. The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository. Journal of Digital Imaging. 2013; 26(6): 1045-1057. doi: 10.1007/s10278-013-9622-7. ([link](https://pubmed.ncbi.nlm.nih.gov/23884657/))
+ - [RSNA Bone Age Challenge](https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/rsna-pediatric-bone-age-challenge-2017) 
+   - Halabi SS, Prevedello LM, Kalpathy-Cramer J, et al. The RSNA Pediatric Bone Age Machine Learning Challenge. Radiology 2018; 290(2):498-503.
+ - [NIH Chest X-ray dataset]('https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community')
+   - Wang X, Peng Y, Lu L, Lu Z, Bagheri M, Summers RM. ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases. IEEE CVPR 2017, http://openaccess.thecvf.com/content_cvpr_2017/papers/Wang_ChestX-ray8_Hospital-Scale_Chest_CVPR_2017_paper.pdf
+   
+Please see the relevant terms of use:
+ - [TCIA Data Usage Policy](https://www.cancerimagingarchive.net/access-data/)
+ - [RSNA Bone Age Challenge Terms of Use](https://www.rsna.org/-/media/Files/RSNA/Education/AI-resources-and-training/AI-image-challenge/RSNA-2017-AI-Challenge-Terms-of-Use-and-Attribution_Final.ashx?la=en&hash=F28B401E267D05658C85F5D207EC4F9AE9AE6FA9)
+
+The scripts here, as is, are simply classifiying the images' modality into these classes:
+- Abdomen CT
+- Breast MRI
+- Chest X-ray
+- Chest CT
+- Hand XR
+- Head CT
+
+This is a relatively easy task for a model to learn.
 
 ## To Do:
  - [ ] Add generic inference and possibly evaluation scripts
