@@ -31,7 +31,7 @@ For example with venv:
 
 `source my_environments/rad_pl_env/bin/activate` 
 
-or conda:
+or [conda](https://www.anaconda.com/products/individual):
 
 `conda create --name rad_pl_env`
 
